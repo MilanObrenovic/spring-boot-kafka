@@ -1,8 +1,16 @@
-# 0. Java Spring Boot + Apache Kafka
+# Java Spring Boot + Apache Kafka
 
 ![banner.svg](misc/banner.svg)
 
 This repository demonstrates the implementation of Apache Kafka with the latest version of Java Spring Boot.
+
+# 0. Technologies used
+
+| Technology       | Version             |
+|------------------|---------------------|
+| Java Spring Boot | `v3.1.4`            |
+| Docker           | `v24.0.6`           |
+| Docker Compose   | `v2.21.0-desktop.1` |
 
 # 1. Start Docker Compose
 

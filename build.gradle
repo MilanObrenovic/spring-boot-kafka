@@ -22,14 +22,18 @@ repositories {
 }
 
 dependencies {
+    // Implementations
     implementation "org.springframework.boot:spring-boot-starter-web:3.1.4"
     implementation "org.apache.kafka:kafka-streams:3.5.1"
     implementation "org.springframework.kafka:spring-kafka:3.0.11"
 
+    // Compile only
     compileOnly "org.projectlombok:lombok:1.18.26"
 
+    // Annotation processors
     annotationProcessor "org.projectlombok:lombok:1.18.26"
 
+    // Test implementations
     testImplementation "org.springframework.boot:spring-boot-starter-test:3.1.4"
     testImplementation "org.springframework.kafka:spring-kafka-test:3.0.11"
 }
