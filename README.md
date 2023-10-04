@@ -11,7 +11,7 @@ This repository demonstrates the implementation of Apache Kafka with the latest 
 | Java Spring Boot | `v3.1.4`            |
 | Docker           | `v24.0.6`           |
 | Docker Compose   | `v2.21.0-desktop.1` |
-| Apache Kafka     | `v3.5.x`            |
+| Apache Kafka     | `v3.4.1`            |
 
 # 1. How Apache Kafka Works
 

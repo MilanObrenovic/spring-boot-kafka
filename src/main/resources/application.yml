@@ -2,7 +2,7 @@ spring:
   kafka:
     consumer:
       bootstrapServers: localhost:9092
-      groupId: myGroup
+      groupId: demoGroup
       autoOffsetReset: earliest
       keyDeserializer: org.apache.kafka.common.serialization.StringDeserializer
       valueDeserializer: org.apache.kafka.common.serialization.StringDeserializer
