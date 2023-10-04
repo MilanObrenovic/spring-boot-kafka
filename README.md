@@ -11,8 +11,28 @@ This repository demonstrates the implementation of Apache Kafka with the latest 
 | Java Spring Boot | `v3.1.4`            |
 | Docker           | `v24.0.6`           |
 | Docker Compose   | `v2.21.0-desktop.1` |
+| Apache Kafka     | `v3.5.x`            |
 
-# 1. Start Docker Compose
+# 1. How Apache Kafka Works
+
+![kafka-overview.svg](misc/kafka-overview.svg)
+
+- **Apache Kafka:**
+	- Kafka is a distributed event streaming platform that enables real-time processing large volumes of data.
+- **Producers:**
+	- Producers generate and send data records to topics, which serve as data channels.
+- **Topics:**
+	- Topics are divided into partitions, which are the fundamental unit of parallelism and scalability.
+- **Partitions:**
+	- Partitions are distributed across brokers within a Kafka Cluster.
+- **Consumers:**
+	- Consumers can read from multiple partitions in parallel, providing horizontal scalability.
+- **Summary:**
+	- Producers publish data to specific topics, and consumers subscribe to those topics to consume data.
+	- Kafka ensures data durability, fault tolerance and high throughput, making it a reliable foundation for building
+		real-time data pipelines and event-driven applications.
+
+# 2. Start Docker Compose
 
 First of all, run the Zookeeper and Kafka server via Docker Compose:
 
@@ -22,11 +42,11 @@ docker compose up -d
 
 - **Note:** this has also started the `kafka-ui` server which can be opened at http://localhost:8090/.
 
-# 2. Imperative Commands
+# 3. Imperative Commands
 
 Test the Kafka server imperatively.
 
-## 2.1. Create a Topic
+## 3.1. Create a Topic
 
 Create a topic named `example-topic`:
 
@@ -38,7 +58,7 @@ kafka-topics --create --topic example-topic \
 
 - Open http://localhost:8090/ui/clusters/local/all-topics and verify that the topic has been created.
 
-## 2.2. Create a Producer
+## 3.2. Create a Producer
 
 Create a producer and attach it to the previously created topic `example-topic`:
 
@@ -57,9 +77,10 @@ kafka-console-producer --topic example-topic \
 >bar
 ```
 
-- Verify that these messages have been added in the `example-topic`: http://localhost:8090/ui/clusters/local/all-topics/example-topic/messages.
+- Verify that these messages have been added in
+	the `example-topic`: http://localhost:8090/ui/clusters/local/all-topics/example-topic/messages.
 
-## 2.3. Create a Consumer
+## 3.3. Create a Consumer
 
 Create a consumer to listen on topic `example-topic` for any new messages that occur in real-time:
 
@@ -75,9 +96,9 @@ kafka-console-consumer --topic example-topic --from-beginning \
 >sample message
 ```
 
-# 3. Test the API
+# 4. Test the API
 
-## 3.1. [GET] /api/v1/messages/publish?message={string}
+## 4.1. [GET] /api/v1/messages/publish?message={string}
 
 Send a new message to the Kafka topic through the Spring Boot API:
 
