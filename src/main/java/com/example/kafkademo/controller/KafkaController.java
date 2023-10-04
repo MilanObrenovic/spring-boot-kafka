@@ -1,18 +1,16 @@
 package com.example.kafkademo.controller;
 
+import com.example.kafkademo.dto.UserDTO;
 import com.example.kafkademo.service.KafkaProducerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/api/v1/messages")
-public class MessageController {
+@RequestMapping(value = "/api/v1/kafka")
+public class KafkaController {
 
     private final KafkaProducerService kafkaProducerService;
 
@@ -23,7 +21,17 @@ public class MessageController {
         kafkaProducerService.sendMessage(message);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body("Message sent to the topic.");
+                .body("STRING message sent to Kafka topic.");
+    }
+
+    @PostMapping("/publish")
+    public ResponseEntity<String> publish(
+            @RequestBody UserDTO userDTO
+    ) {
+        kafkaProducerService.sendMessage(userDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("JSON message sent to Kafka topic.");
     }
 
 }

@@ -98,20 +98,42 @@ kafka-console-consumer --topic example-topic --from-beginning \
 
 # 4. Test the API
 
-## 4.1. [GET] /api/v1/messages/publish?message={string}
+## 4.1. [GET] /api/v1/kafka/publish?message={string}
 
 Send a new message to the Kafka topic through the Spring Boot API:
 
 ```shell
-curl "http://localhost:8080/api/v1/messages/publish?message=hello%20world"
+curl "http://localhost:8080/api/v1/kafka/publish?message=hello%20world"
 ```
 
 - To watch the topic get updated in real-time, run command:
 
 ```shell
 docker exec -it kafka-server \
-kafka-console-consumer --topic foobar-topic --from-beginning \
+kafka-console-consumer --topic string-topic --from-beginning \
 --bootstrap-server localhost:9092
 ```
 
-- Or simply observe it on the Kafka UI: http://localhost:8090/ui/clusters/local/all-topics/foobar-topic/messages.
+- Or simply observe it on the Kafka UI: http://localhost:8090/ui/clusters/local/all-topics/string-topic/messages.
+
+## 4.2. [POST] /api/v1/kafka/publish
+
+Send a new message to the Kafka topic through the Spring Boot API:
+
+```shell
+curl -X POST -H "Content-Type: application/json" -d '{
+"id": 1,
+"first_name": "John",
+"last_name": "Doe"
+}' http://localhost:8080/api/v1/kafka/publish
+```
+
+- To watch the topic get updated in real-time, run command:
+
+```shell
+docker exec -it kafka-server \
+kafka-console-consumer --topic json-topic --from-beginning \
+--bootstrap-server localhost:9092
+```
+
+- Or simply observe it on the Kafka UI: http://localhost:8090/ui/clusters/local/all-topics/json-topic/messages.
