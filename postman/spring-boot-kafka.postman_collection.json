@@ -1,0 +1,109 @@
+{
+  "info": {
+    "_postman_id": "7417c22d-de9e-4f67-8d2c-f38f93c4ebc4",
+    "name": "spring-boot-kafka",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "9274375"
+  },
+  "item": [
+    {
+      "name": "kafka-string",
+      "item": [
+        {
+          "name": "/api/v1/kafka/publish",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 1,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base-url}}/api/v1/kafka/publish",
+              "host": [
+                "{{base-url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "kafka",
+                "publish"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/api/v1/kafka/publish?message={string}",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"user\": {\n        \"name\": \"one\",\n        \"mobileNumber\": \"123456789\"\n    },\n    \"products\": [\n        {\n            \"name\": \"Razyen 7\",\n            \"price\": 200\n        },\n        {\n            \"name\": \"Gigabyte Motherboard\",\n            \"price\": 50\n        }\n    ],\n    \"address\": \"Twostreet five\",\n    \"isDelivered\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base-url}}/api/v1/kafka/publish?message=wow",
+              "host": [
+                "{{base-url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "kafka",
+                "publish"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "wow"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base-url",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
